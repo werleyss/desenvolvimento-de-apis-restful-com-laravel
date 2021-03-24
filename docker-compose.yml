@@ -7,7 +7,7 @@ services:
       context: .
       dockerfile: Dockerfile
     image: php:7.4
-    container_name: apiecommerce
+    container_name: especialapi
     restart: unless-stopped
     tty: true
     environment:
@@ -23,7 +23,7 @@ services:
   #Nginx Service
   webserver:
     image: nginx:alpine
-    container_name: webserverapiecommerce
+    container_name: webserverespecialapi
     restart: unless-stopped
     tty: true
     ports:
@@ -38,14 +38,14 @@ services:
   #MySQL Service
   db:
     image: mysql:5.7.22
-    container_name: dbapiecommerce
+    container_name: dbespecialapi
     restart: unless-stopped
     tty: true
     ports:
       - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: apiecommerce
+      MYSQL_DATABASE: especialapi
       MYSQL_USER: dev
       MYSQL_PASSWORD: root
       SERVICE_TAGS: dev
