@@ -21,17 +21,17 @@ class ProductsController extends Controller
 
     public function store(Request $request)
     {
-        //
+        return $this->item::create($request->all());
     }
 
     public function show($id)
     {
-        //
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+            $this->item->update($request->all());
+            return $this->item;
     }
 
     public function destroy($id)
