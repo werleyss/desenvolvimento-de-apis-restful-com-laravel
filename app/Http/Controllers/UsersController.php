@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
-use Illuminate\Http\Request;
+use App\Models\User;
+use App\Http\Requests\ProductsRequest as Request;
 
-class ProductsController extends Controller
+class UsersController extends Controller
 {
     private $item;
 
-    public function __construct(Product $item)
+    public function __construct(User $item)
     {
         $this->item = $item;
     }
@@ -29,10 +29,10 @@ class ProductsController extends Controller
         return $this->item;
     }
 
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-            $this->item->update($request->all());
-            return $this->item;
+        $this->item->update($request->all());
+        return $this->item;
     }
 
     public function destroy($id)
@@ -40,6 +40,4 @@ class ProductsController extends Controller
         $this->item->delete();
         return $this->item;
     }
-
-
 }

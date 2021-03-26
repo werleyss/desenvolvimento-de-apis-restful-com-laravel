@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,5 +21,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::prefix('v1')->group(function () {
-    Route::resource('/products', ProductsController::class);
+    Route::resources(
+        [
+        'products' => ProductsController::class,
+        'users' => UsersController::class,
+        ]
+    );
 });
