@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\PassportAuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,8 +20,10 @@ use App\Http\Controllers\UsersController;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::post('register', [PassportAuthController::class, 'register']);
+Route::post('login', [PassportAuthController::class, 'login']);
 
-Route::prefix('v1')->group(function () {
+Route::middleware('auth:api')->prefix('v1')->group(function () {
     Route::resources(
         [
         'products' => ProductsController::class,
