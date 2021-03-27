@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use Illuminate\Http\Request;
+use App\Http\Requests\ProductsRequest as Request;
 
 class ProductsController extends Controller
 {
@@ -26,7 +26,7 @@ class ProductsController extends Controller
 
     public function show($id)
     {
-        return $this->item;
+        return $this->item::findOrFail($id);
     }
 
     public function update(Request $request)

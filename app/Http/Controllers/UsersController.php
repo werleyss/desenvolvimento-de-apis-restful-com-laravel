@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Http\Requests\ProductsRequest as Request;
+use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
@@ -26,7 +26,7 @@ class UsersController extends Controller
 
     public function show($id)
     {
-        return $this->item;
+        return $this->item->findOrFail($id);
     }
 
     public function update(Request $request, $id)
